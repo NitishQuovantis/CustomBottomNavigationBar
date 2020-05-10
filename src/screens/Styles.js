@@ -13,6 +13,12 @@ const Styles = StyleSheet.create({
     fontSize: 20,
     marginVertical: 20,
   },
+
+  dummyTextStyle: {
+    textAlign: 'justify',
+    paddingVertical: 20,
+    paddingHorizontal: 10,
+  },
 });
 
 export default Styles;

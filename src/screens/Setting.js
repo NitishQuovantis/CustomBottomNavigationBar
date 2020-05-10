@@ -8,6 +8,8 @@ export default class Setting extends Component {
     this.state = {};
   }
 
+  static name = 'Setting';
+
   render() {
     return (
       <View style={Styles.containerStyle}>

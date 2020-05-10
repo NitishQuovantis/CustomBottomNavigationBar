@@ -1,18 +1,45 @@
 import React, {Component} from 'react';
-import {View, Text, Button} from 'react-native';
+import {SafeAreaView, Text, Button, ScrollView} from 'react-native';
 import Styles from './Styles';
 import {ScreenName} from './ScreenConstant';
+import BottomBarContext from '../Contexts/BottomBarContext';
+import {UserType} from '../Utils/Constants';
 
 export default class Dashboard extends Component {
+  static contextType = BottomBarContext;
+
   constructor(props) {
     super(props);
     this.state = {};
   }
 
   render() {
+    const isPatient = this.context.userType === UserType.Patient;
+    const showSummary = this.context.showSummary;
+
     return (
-      <View style={Styles.containerStyle}>
+      <ScrollView>
+        <SafeAreaView />
+
         <Text style={Styles.screenNameTextStyle}>Dashboard</Text>
+
+        <Button
+          title={isPatient ? 'Change user to Admin' : 'Change user to Patient'}
+          onPress={() => {
+            if (isPatient) {
+              this.context.setUserType(UserType.Admin);
+            } else {
+              this.context.setUserType(UserType.Patient);
+            }
+          }}
+        />
+
+        <Button
+          title={showSummary ? 'Hide Summary' : 'Show Summary'}
+          onPress={() => {
+            this.context.setSummaryVisibility(!showSummary);
+          }}
+        />
 
         <Button
           onPress={() => {
@@ -55,7 +82,7 @@ export default class Dashboard extends Component {
           }}
           title="Move to Setting Screen"
         />
-      </View>
+      </ScrollView>
     );
   }
 }

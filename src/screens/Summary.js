@@ -13,32 +13,15 @@ export default class Summary extends Component {
       <View style={Styles.containerStyle}>
         <Text style={Styles.screenNameTextStyle}>Summary</Text>
 
-        <Button
-          onPress={() => {
-            this.props.navigation.navigate('Screen2');
-          }}
-          title="Move to screen 2"
-        />
+        <Text style={Styles.screenNameTextStyle}>
+          I have your report card for your program and It is Gooooooood.
+        </Text>
 
         <Button
           onPress={() => {
-            this.props.navigation.navigate('Screen3');
+            this.props.navigation.goBack();
           }}
-          title="Move to screen 3"
-        />
-
-        <Button
-          onPress={() => {
-            this.props.navigation.navigate('Screen4');
-          }}
-          title="Move to screen 4"
-        />
-
-        <Button
-          onPress={() => {
-            this.props.navigation.navigate('Screen5');
-          }}
-          title="Move to screen 5"
+          title="Go Back"
         />
       </View>
     );
