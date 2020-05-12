@@ -39,11 +39,9 @@ class SimpleBottomBar extends Component {
         this.runAnimation(0);
       }
     }
-
     if (prevProps.selectedIndex !== this.props.selectedIndex) {
       this.setState({selectedIndex: this.props.selectedIndex});
     }
-
     if (this.context.userType !== this.state.userType) {
       this.setState({userType: this.context.userType});
     }
@@ -77,17 +75,8 @@ class SimpleBottomBar extends Component {
       outputRange: [0, isPatient ? BottomBarConstant.BottomBarHeight : 0],
     });
 
-    const translationInterpolation = this.state.animated.interpolate({
-      inputRange: [0, 1],
-      outputRange: [
-        BottomBarConstant.BottomBarHeight,
-        isPatient ? 0 : BottomBarConstant.BottomBarHeight,
-      ],
-    });
-
     return {
       height: heightInterpolation,
-      // transform: [{translateY: translationInterpolation}],
       backgroundColor: 'white',
     };
   };
